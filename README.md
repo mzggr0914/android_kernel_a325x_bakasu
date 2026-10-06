@@ -22,8 +22,8 @@ Other SM-A325 regional variants may be compatible because they share the same ba
 
 <!-- AUTO:RESUKISU:START -->
 - ReSukiSU `v4.2.0-rc3`
-- ReSukiSU kernel version code `35212`
-- ReSukiSU commit [`e5423590`](https://github.com/ReSukiSU/ReSukiSU/commit/e5423590bec3e24daffa4e9555c9592071319c68)
+- ReSukiSU kernel version code `35215`
+- ReSukiSU commit [`1bfed00f`](https://github.com/ReSukiSU/ReSukiSU/commit/1bfed00f597e65700d70fee0feb1d424fc21a2e5)
 <!-- AUTO:RESUKISU:END -->
 - SUSFS `v2.3.0`
 - KernelSU multi-manager support
