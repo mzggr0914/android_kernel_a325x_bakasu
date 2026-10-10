@@ -1,6 +1,6 @@
-# Samsung Galaxy A32 ReSukiSU Kernel
+# Samsung Galaxy A32 BakaSU Kernel
 
-Custom Android kernel for the **Samsung Galaxy A32 4G (SM-A325 series)**, based on the Samsung MT6768 kernel source and integrated with **ReSukiSU** and **SUSFS**.
+Custom Android kernel for the **Samsung Galaxy A32 4G (SM-A325 series)**, based on the Samsung MT6768 kernel source and integrated with **BakaSU** and **SUSFS**.
 
 This kernel is intended for the SM-A325 family, including regional variants such as the SM-A325N and SM-A325F. It has been tested on the SM-A325N. Compatibility with every regional variant, firmware release, and ROM cannot be guaranteed.
 
@@ -20,14 +20,14 @@ Other SM-A325 regional variants may be compatible because they share the same ba
 
 ## Features
 
-<!-- AUTO:RESUKISU:START -->
-- ReSukiSU `v4.2.0-rc3`
-- ReSukiSU kernel version code `35222`
-- ReSukiSU commit [`5b76b884`](https://github.com/ReSukiSU/ReSukiSU/commit/5b76b884c75f729a220bb317aa4a4fc78f0e0e9c)
-<!-- AUTO:RESUKISU:END -->
+<!-- AUTO:BAKASU:START -->
+- BakaSU `v4.2.0-rc3`
+- BakaSU kernel version code `35222`
+- BakaSU commit [`5b76b884`](https://github.com/Baka-SU/BakaSU/commit/5b76b884c75f729a220bb317aa4a4fc78f0e0e9c)
+<!-- AUTO:BAKASU:END -->
 - SUSFS `v2.3.0`
 - KernelSU multi-manager support
-- ReSukiSU SUSFS inline-hook integration for this non-GKI Linux 4.14 tree (KProbes/Kretprobes remain enabled for compatibility)
+- BakaSU SUSFS inline-hook integration for this non-GKI Linux 4.14 tree (KProbes/Kretprobes remain enabled for compatibility)
 - SELinux enforcing
 - NoMount `v2.0.0` built-in path redirection and virtual file injection
 - SUSFS mount hiding
@@ -63,7 +63,7 @@ You are responsible for your own device. Always keep a working boot image or com
 3. Download the latest AnyKernel3 ZIP from the Releases page.
 4. Flash the ZIP using a compatible custom recovery or kernel flashing application.
 5. Reboot the device.
-6. Install a compatible ReSukiSU Manager build if it is not already installed.
+6. Install a compatible BakaSU Manager build if it is not already installed.
 
 The kernel has been tested on the SM-A325N. Users of other SM-A325 variants should verify that they can restore the original boot image before flashing.
 
@@ -71,11 +71,11 @@ Do not flash this kernel on devices outside the SM-A325 series.
 
 ## Building
 
-Clone the repository with its ReSukiSU submodule:
+Clone the repository with its BakaSU submodule:
 
 ```bash
-git clone --recursive https://github.com/mzggr0914/android_kernel_a325x_resukisu.git
-cd android_kernel_a325x_resukisu
+git clone --recursive https://github.com/mzggr0914/android_kernel_a325x_bakasu.git
+cd android_kernel_a325x_bakasu
 ```
 
 If the repository was cloned without submodules, initialize them manually:
@@ -132,11 +132,11 @@ This project would not have been possible without the work of the following proj
 
   This repository is based on and derived from the Samsung MT6768 kernel source maintained by Samsung-MT6769-Devs.
 
-### ReSukiSU
+### BakaSU
 
-- [ReSukiSU/ReSukiSU](https://github.com/ReSukiSU/ReSukiSU)
+- [Baka-SU/BakaSU](https://github.com/Baka-SU/BakaSU)
 
-  ReSukiSU provides the KernelSU implementation and manager-side integration used by this kernel.
+  BakaSU provides the KernelSU implementation and manager-side integration used by this kernel.
 
 ### KernelSU Backport References
 
@@ -166,15 +166,15 @@ This project would not have been possible without the work of the following proj
 
   The flashable release package is based on AnyKernel3 by osm0sis.
 
-Special thanks to all upstream Linux, Android, Samsung kernel, KernelSU, ReSukiSU, SUSFS, and AnyKernel3 contributors.
+Special thanks to all upstream Linux, Android, Samsung kernel, KernelSU, BakaSU, SUSFS, and AnyKernel3 contributors.
 
 ## Changes Specific to This Kernel
 
 This repository contains device-specific integration and compatibility work, including:
 
-- ReSukiSU integration for the Samsung Galaxy A32 SM-A325 kernel tree
+- BakaSU integration for the Samsung Galaxy A32 SM-A325 kernel tree
 - SUSFS v2.3.0 backport for Linux 4.14
-- ReSukiSU SUSFS sucompat runtime handling for `execve`, post-exec SU sessions, `faccessat`, and stat-family lookups
+- BakaSU SUSFS sucompat runtime handling for `execve`, post-exec SU sessions, `faccessat`, and stat-family lookups
 - Refreshed SUSFS v2.3.0 kstat/statfs, inotify, proc-fd, mount-hiding, open-redirect, and map-spoofing integration based on the current non-GKI 4.14 reference patches
 - A32-specific fixes for post-exec boot hangs, kstat flag collisions, statfs spoof return handling, readlink/open-redirect semantics, mount reference handling, and SUSFS allocation failure paths
 - NoMount v2.0.0 built-in integration with mountless path redirection and virtual file injection
@@ -193,7 +193,7 @@ When reporting an issue, include:
 - Exact device model
 - ROM and Android version
 - Firmware or bootloader version
-- ReSukiSU Manager version
+- BakaSU Manager version
 - Kernel version shown in the manager
 - Relevant kernel logs
 - Steps required to reproduce the issue
@@ -202,7 +202,7 @@ Please clearly state whether the issue occurred on the tested SM-A325N or anothe
 
 Issues from devices outside the SM-A325 series may be closed without investigation.
 
-Do not report issues to the upstream ReSukiSU, SUSFS, KernelSU, AnyKernel3, or base-kernel repositories unless the issue has been confirmed to originate from their unmodified upstream code.
+Do not report issues to the upstream BakaSU, SUSFS, KernelSU, AnyKernel3, or base-kernel repositories unless the issue has been confirmed to originate from their unmodified upstream code.
 
 ## License
 
@@ -220,4 +220,4 @@ This repository does not change the licensing terms of any upstream project.
 
 This is an independent community project.
 
-It is not affiliated with, authorized by, maintained by, or endorsed by Samsung Electronics, ReSukiSU, KernelSU, SUSFS, AnyKernel3, or any other upstream project.
+It is not affiliated with, authorized by, maintained by, or endorsed by Samsung Electronics, BakaSU, KernelSU, SUSFS, AnyKernel3, or any other upstream project.

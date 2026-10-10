@@ -1,4 +1,4 @@
-name: Update ReSukiSU
+name: Update BakaSU
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       publish_release:
-        description: 'Publish a kernel Release after updating ReSukiSU'
+        description: 'Publish a kernel Release after updating BakaSU'
         required: false
         type: boolean
         default: true
@@ -17,12 +17,12 @@ permissions:
   actions: write
 
 concurrency:
-  group: resukisu-auto-update
+  group: bakasu-auto-update
   cancel-in-progress: false
 
 jobs:
   update:
-    name: Update ReSukiSU submodule and README
+    name: Update BakaSU submodule and README
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -35,7 +35,7 @@ jobs:
           submodules: recursive
           persist-credentials: true
 
-      - name: Check ReSukiSU main
+      - name: Check BakaSU main
         id: ksu
         shell: bash
         run: |
@@ -53,12 +53,12 @@ jobs:
             git -C KernelSU checkout --detach "$latest"
             updated=true
           else
-            echo "ReSukiSU is already current."
+            echo "BakaSU is already current."
           fi
 
           short="$(git -C KernelSU rev-parse --short=8 HEAD)"
           desc="$(git -C KernelSU describe --tags --always)"
-          base_tag="$(git -C KernelSU describe --tags --abbrev=0 2>/dev/null || echo resukisu)"
+          base_tag="$(git -C KernelSU describe --tags --abbrev=0 2>/dev/null || echo bakasu)"
           count="$(git -C KernelSU rev-list --count HEAD)"
           code="$((30700 + count))"
           release_tag="${base_tag}-${code}"
@@ -69,7 +69,7 @@ jobs:
           echo "code=$code" >> "$GITHUB_OUTPUT"
           echo "release_tag=$release_tag" >> "$GITHUB_OUTPUT"
 
-          echo "ReSukiSU: $desc"
+          echo "BakaSU: $desc"
           echo "Version code: $code"
           echo "Kernel release tag: $release_tag"
 
@@ -100,9 +100,9 @@ jobs:
           git diff --cached --submodule=short
 
           if [ "${{ steps.ksu.outputs.updated }}" = "true" ]; then
-            git commit -m "kernelsu: update ReSukiSU to ${{ steps.ksu.outputs.short }}"
+            git commit -m "kernelsu: update BakaSU to ${{ steps.ksu.outputs.short }}"
           else
-            git commit -m "docs: sync ReSukiSU README metadata"
+            git commit -m "docs: sync BakaSU README metadata"
           fi
           git push origin HEAD:common
 

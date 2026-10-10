@@ -1,6 +1,6 @@
-# Samsung Galaxy A32 ReSukiSU 커널
+# Samsung Galaxy A32 BakaSU 커널
 
-Samsung MT6768 커널 소스를 기반으로 **ReSukiSU**와 **SUSFS**를 통합한 **Samsung Galaxy A32 4G(SM-A325 시리즈)**용 커스텀 Android 커널입니다.
+Samsung MT6768 커널 소스를 기반으로 **BakaSU**와 **SUSFS**를 통합한 **Samsung Galaxy A32 4G(SM-A325 시리즈)**용 커스텀 Android 커널입니다.
 
 이 커널은 SM-A325N과 SM-A325F를 포함한 SM-A325 계열의 지역별 모델을 대상으로 합니다. 실제 테스트는 SM-A325N에서 진행되었습니다. 모든 지역별 모델, 펌웨어 버전 및 ROM과의 호환성을 보장하지는 않습니다.
 
@@ -20,14 +20,14 @@ Samsung MT6768 커널 소스를 기반으로 **ReSukiSU**와 **SUSFS**를 통합
 
 ## 주요 기능
 
-<!-- AUTO:RESUKISU:START -->
-- ReSukiSU `v4.2.0-rc3`
-- ReSukiSU 커널 버전 코드 `35222`
-- ReSukiSU 커밋 [`5b76b884`](https://github.com/ReSukiSU/ReSukiSU/commit/5b76b884c75f729a220bb317aa4a4fc78f0e0e9c)
-<!-- AUTO:RESUKISU:END -->
+<!-- AUTO:BAKASU:START -->
+- BakaSU `v4.2.0-rc3`
+- BakaSU 커널 버전 코드 `35222`
+- BakaSU 커밋 [`5b76b884`](https://github.com/Baka-SU/BakaSU/commit/5b76b884c75f729a220bb317aa4a4fc78f0e0e9c)
+<!-- AUTO:BAKASU:END -->
 - SUSFS `v2.3.0`
 - KernelSU 멀티 매니저 지원
-- 이 Non-GKI Linux 4.14 트리를 위한 ReSukiSU SUSFS inline-hook 통합(KProbes/Kretprobes는 호환성을 위해 활성화)
+- 이 Non-GKI Linux 4.14 트리를 위한 BakaSU SUSFS inline-hook 통합(KProbes/Kretprobes는 호환성을 위해 활성화)
 - SELinux Enforcing
 - NoMount `v2.0.0` 내장형 경로 리다이렉션 및 가상 파일 주입
 - SUSFS 마운트 숨김
@@ -63,7 +63,7 @@ Samsung MT6768 커널 소스를 기반으로 **ReSukiSU**와 **SUSFS**를 통합
 3. Releases 페이지에서 최신 AnyKernel3 ZIP을 다운로드하세요.
 4. 호환되는 커스텀 리커버리 또는 커널 플래시 애플리케이션을 사용해 ZIP을 플래시하세요.
 5. 기기를 재부팅하세요.
-6. 호환되는 ReSukiSU Manager가 설치되어 있지 않다면 설치하세요.
+6. 호환되는 BakaSU Manager가 설치되어 있지 않다면 설치하세요.
 
 이 커널은 SM-A325N에서 테스트되었습니다. 다른 SM-A325 모델 사용자는 플래시하기 전에 기존 부트 이미지를 복구할 수 있는지 반드시 확인하세요.
 
@@ -71,11 +71,11 @@ SM-A325 시리즈가 아닌 기기에는 이 커널을 플래시하지 마세요
 
 ## 빌드 방법
 
-ReSukiSU 서브모듈을 포함하여 저장소를 복제하세요.
+BakaSU 서브모듈을 포함하여 저장소를 복제하세요.
 
 ```bash
-git clone --recursive https://github.com/mzggr0914/android_kernel_a325x_resukisu.git
-cd android_kernel_a325x_resukisu
+git clone --recursive https://github.com/mzggr0914/android_kernel_a325x_bakasu.git
+cd android_kernel_a325x_bakasu
 ```
 
 서브모듈 없이 저장소를 복제했다면 다음 명령으로 서브모듈을 초기화하세요.
@@ -132,11 +132,11 @@ arch/arm64/configs/a325n-release.config
 
   이 저장소는 Samsung-MT6769-Devs에서 관리하는 Samsung MT6768 커널 소스를 기반으로 제작되었습니다.
 
-### ReSukiSU
+### BakaSU
 
-- [ReSukiSU/ReSukiSU](https://github.com/ReSukiSU/ReSukiSU)
+- [Baka-SU/BakaSU](https://github.com/Baka-SU/BakaSU)
 
-  ReSukiSU는 이 커널에 사용된 KernelSU 구현과 매니저 측 통합 기능을 제공합니다.
+  BakaSU는 이 커널에 사용된 KernelSU 구현과 매니저 측 통합 기능을 제공합니다.
 
 ### KernelSU 백포트 참고 자료
 
@@ -166,15 +166,15 @@ arch/arm64/configs/a325n-release.config
 
   플래시 가능한 릴리스 패키지는 osm0sis의 AnyKernel3를 기반으로 제작되었습니다.
 
-Linux, Android, Samsung 커널, KernelSU, ReSukiSU, SUSFS 및 AnyKernel3의 모든 업스트림 기여자에게 감사드립니다.
+Linux, Android, Samsung 커널, KernelSU, BakaSU, SUSFS 및 AnyKernel3의 모든 업스트림 기여자에게 감사드립니다.
 
 ## 이 커널에 적용된 변경 사항
 
 이 저장소에는 다음과 같은 기기별 통합 및 호환성 작업이 포함되어 있습니다.
 
-- Samsung Galaxy A32 SM-A325 커널 트리를 위한 ReSukiSU 통합
+- Samsung Galaxy A32 SM-A325 커널 트리를 위한 BakaSU 통합
 - Linux 4.14용 SUSFS v2.3.0 백포트
-- `execve`, post-exec SU session, `faccessat` 및 stat 계열 조회를 위한 ReSukiSU SUSFS sucompat 런타임 처리
+- `execve`, post-exec SU session, `faccessat` 및 stat 계열 조회를 위한 BakaSU SUSFS sucompat 런타임 처리
 - 최신 Non-GKI 4.14 참고 패치를 기반으로 갱신한 SUSFS v2.3.0 kstat/statfs, inotify, proc-fd, mount hiding, open redirect 및 map spoofing 통합
 - post-exec 부트 멈춤, kstat 플래그 충돌, statfs spoof 반환 처리, readlink/open-redirect 의미론, mount reference 처리 및 SUSFS allocation failure 경로에 대한 A32 전용 버그 수정
 - 마운트 없는 경로 리다이렉션과 가상 파일 주입을 제공하는 NoMount v2.0.0 built-in 통합
@@ -191,7 +191,7 @@ Linux, Android, Samsung 커널, KernelSU, ReSukiSU, SUSFS 및 AnyKernel3의 모�
 - 정확한 기기 모델
 - ROM 및 Android 버전
 - 펌웨어 또는 부트로더 버전
-- ReSukiSU Manager 버전
+- BakaSU Manager 버전
 - 매니저에 표시되는 커널 버전
 - 관련 커널 로그
 - 문제를 재현하는 데 필요한 절차
@@ -200,7 +200,7 @@ Linux, Android, Samsung 커널, KernelSU, ReSukiSU, SUSFS 및 AnyKernel3의 모�
 
 SM-A325 시리즈가 아닌 기기에서 발생한 문제는 조사 없이 종료될 수 있습니다.
 
-문제가 수정되지 않은 업스트림 코드에서 발생한 것으로 확인되지 않았다면 ReSukiSU, SUSFS, KernelSU, AnyKernel3 또는 기본 커널의 업스트림 저장소에 문제를 보고하지 마세요.
+문제가 수정되지 않은 업스트림 코드에서 발생한 것으로 확인되지 않았다면 BakaSU, SUSFS, KernelSU, AnyKernel3 또는 기본 커널의 업스트림 저장소에 문제를 보고하지 마세요.
 
 ## 라이선스
 
@@ -218,4 +218,4 @@ Linux 커널 소스는 GNU General Public License 버전 2에 따라 배포됩�
 
 이 프로젝트는 독립적인 커뮤니티 프로젝트입니다.
 
-Samsung Electronics, ReSukiSU, KernelSU, SUSFS, AnyKernel3 또는 그 밖의 업스트림 프로젝트와 제휴되어 있지 않으며, 이들로부터 승인, 유지보수 또는 보증을 받지 않습니다.
+Samsung Electronics, BakaSU, KernelSU, SUSFS, AnyKernel3 또는 그 밖의 업스트림 프로젝트와 제휴되어 있지 않으며, 이들로부터 승인, 유지보수 또는 보증을 받지 않습니다.

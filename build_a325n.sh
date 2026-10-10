@@ -14,7 +14,7 @@ export LD=ld.lld
 export CROSS_COMPILE=aarch64-linux-gnu-
 export LLVM=1
 export LLVM_IAS=0
-export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-resukisu}
+export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-bakasu}
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-builder}
 export KBUILD_BUILD_VERSION=${KBUILD_BUILD_VERSION:-1}
 if [ -z "${KBUILD_BUILD_TIMESTAMP:-}" ]; then

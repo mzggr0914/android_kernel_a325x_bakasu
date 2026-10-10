@@ -211,8 +211,8 @@ jobs:
           set -euo pipefail
           echo "Kernel commit : $(git rev-parse HEAD)"
           echo "Kernel branch : ${GITHUB_REF_NAME}"
-          echo "ReSukiSU SHA  : $(git -C KernelSU rev-parse HEAD)"
-          echo "ReSukiSU desc : $(git -C KernelSU describe --tags --always --dirty)"
+          echo "BakaSU SHA  : $(git -C KernelSU rev-parse HEAD)"
+          echo "BakaSU desc : $(git -C KernelSU describe --tags --always --dirty)"
           echo "AnyKernel SHA : $ANYKERNEL_RESOLVED_COMMIT"
           echo "Disk before build:"
           df -h "$GITHUB_WORKSPACE" "$RUNNER_TEMP"
@@ -299,16 +299,16 @@ jobs:
           Kernel commit: $kernel_sha
           Kernel short: $kernel_short
           Kernel release: $kernel_release
-          ReSukiSU commit: $ksu_sha
-          ReSukiSU describe: $ksu_desc
-          ReSukiSU version code: $ksu_code
+          BakaSU commit: $ksu_sha
+          BakaSU describe: $ksu_desc
+          BakaSU version code: $ksu_code
           SUSFS: $susfs
           Toolchain release: $TOOLCHAIN_REPO@$TOOLCHAIN_RELEASE
           AnyKernel upstream: $ANYKERNEL_REPO@$ANYKERNEL_RESOLVED_COMMIT
           Workflow run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
           EOF
 
-          echo "ARTIFACT_NAME=A325N-ReSukiSU-$kernel_short" >> "$GITHUB_ENV"
+          echo "ARTIFACT_NAME=A325N-BakaSU-$kernel_short" >> "$GITHUB_ENV"
           echo "ZIP_NAME=$(basename "$zip_path")" >> "$GITHUB_ENV"
 
           echo '--- build-info.txt ---'
@@ -341,7 +341,7 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v7
         with:
-          pattern: A325N-ReSukiSU-*
+          pattern: A325N-BakaSU-*
           path: release
           merge-multiple: true
 
@@ -382,6 +382,6 @@ jobs:
             gh release create "$RELEASE_TAG" "${assets[@]}" \
               --repo "$GITHUB_REPOSITORY" \
               --target "$GITHUB_SHA" \
-              --title "A325N ReSukiSU $RELEASE_TAG" \
+              --title "A325N BakaSU $RELEASE_TAG" \
               --generate-notes
           fi
