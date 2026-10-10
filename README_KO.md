@@ -29,7 +29,7 @@ Samsung MT6768 커널 소스를 기반으로 **BakaSU**와 **SUSFS**를 통합�
 - KernelSU 멀티 매니저 지원
 - 이 Non-GKI Linux 4.14 트리를 위한 BakaSU SUSFS inline-hook 통합(KProbes/Kretprobes는 호환성을 위해 활성화)
 - SELinux Enforcing
-- NoMount `v2.0.0` 내장형 경로 리다이렉션 및 가상 파일 주입
+- NoMount `v2.1.0` 내장형 경로 리다이렉션 및 가상 파일 주입
 - SUSFS 마운트 숨김
 - SUSFS 경로 숨김
 - SUSFS kstat 위조
@@ -158,7 +158,7 @@ arch/arm64/configs/a325n-release.config
 
 - [maxsteeel/nomount](https://github.com/maxsteeel/nomount)
 
-  NoMount는 별도의 파일시스템 마운트 없이 경로 리다이렉션과 가상 파일 주입 기능을 제공합니다. 이 커널에는 Linux 4.14 기기 트리에 맞춰 업스트림 NoMount v2.0.0 커널 구현이 built-in 서브시스템으로 통합되어 있습니다.
+  NoMount는 별도의 파일시스템 마운트 없이 경로 리다이렉션과 가상 파일 주입 기능을 제공합니다. 이 커널에는 Linux 4.14 기기 트리에 맞춰 업스트림 NoMount v2.1.0 커널 구현이 built-in 서브시스템으로 통합되어 있습니다. 소스는 커밋 `c7f63e3feb4125d591b6969a33aac04feb40f8ba`에 고정되어 있으며 드라이버 버전은 `21-500`으로 표시됩니다. 일치하는 NoMount v2.1.0 메타모듈과 CLI를 사용하세요.
 
 ### AnyKernel3
 
@@ -177,7 +177,7 @@ Linux, Android, Samsung 커널, KernelSU, BakaSU, SUSFS 및 AnyKernel3의 모든
 - `execve`, post-exec SU session, `faccessat` 및 stat 계열 조회를 위한 BakaSU SUSFS sucompat 런타임 처리
 - 최신 Non-GKI 4.14 참고 패치를 기반으로 갱신한 SUSFS v2.3.0 kstat/statfs, inotify, proc-fd, mount hiding, open redirect 및 map spoofing 통합
 - post-exec 부트 멈춤, kstat 플래그 충돌, statfs spoof 반환 처리, readlink/open-redirect 의미론, mount reference 처리 및 SUSFS allocation failure 경로에 대한 A32 전용 버그 수정
-- 마운트 없는 경로 리다이렉션과 가상 파일 주입을 제공하는 NoMount v2.0.0 built-in 통합
+- 마운트 없는 경로 리다이렉션과 가상 파일 주입을 제공하는 NoMount v2.1.0 built-in 통합
 - Samsung 및 MediaTek 호환성 수정
 - `/proc/cmdline` 위조 안정성 수정
 - 구형 네트워크, 메모리 관리 및 커널 API 호환성 수정
