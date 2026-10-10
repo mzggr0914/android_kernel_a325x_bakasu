@@ -148,7 +148,7 @@ This project would not have been possible without the work of the following proj
 
 - [simonpunk/susfs4ksu](https://gitlab.com/simonpunk/susfs4ksu)
 
-  SUSFS and its original kernel patches are developed and maintained by Simonpunk. This kernel includes a Linux 4.14 port based on SUSFS v2.3.0.
+  SUSFS and its original kernel patches are developed and maintained by Simonpunk. This kernel includes a Linux 4.14 port based on SUSFS v2.3.0. The patch reference is pinned to NonGKI_Kernel_Build_2nd commit `b5d7e5be60398f040b9e9919186c410c01a228da`, with the upstream `clone_mnt()` race fix from Simonpunk commit `f3b5aecf53ff8b3296603071b91383f6be6c7cbb` and A32 compatibility fixes retained.
 
 - [JackA1ltman/NonGKI_Kernel_Build_2nd](https://github.com/JackA1ltman/NonGKI_Kernel_Build_2nd)
 

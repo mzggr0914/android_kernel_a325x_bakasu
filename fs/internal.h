@@ -192,5 +192,12 @@ loff_t iomap_apply(struct inode *inode, loff_t pos, loff_t length,
 		unsigned flags, const struct iomap_ops *ops, void *data,
 		iomap_actor_t actor);
 
+/* SUSFS statfs helpers shared by statfs.c and susfs.c. */
+#ifdef CONFIG_KSU_SUSFS_SUS_KSTAT
+struct kstatfs;
+int statfs_by_dentry_wrapper(struct dentry *dentry, struct kstatfs *buf);
+int calculate_f_flags_wrapper(struct vfsmount *mnt);
+#endif
+
 /* direct-io.c: */
 int sb_init_dio_done_wq(struct super_block *sb);

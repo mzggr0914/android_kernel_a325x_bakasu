@@ -148,7 +148,7 @@ arch/arm64/configs/a325n-release.config
 
 - [simonpunk/susfs4ksu](https://gitlab.com/simonpunk/susfs4ksu)
 
-  SUSFS와 원본 커널 패치는 Simonpunk가 개발하고 관리합니다. 이 커널에는 SUSFS v2.3.0을 기반으로 한 Linux 4.14 포팅이 포함되어 있습니다.
+  SUSFS와 원본 커널 패치는 Simonpunk가 개발하고 관리합니다. 이 커널에는 SUSFS v2.3.0을 기반으로 한 Linux 4.14 포팅이 포함되어 있습니다. 패치 참고 기준은 NonGKI_Kernel_Build_2nd 커밋 `b5d7e5be60398f040b9e9919186c410c01a228da`에 고정했으며, Simonpunk 커밋 `f3b5aecf53ff8b3296603071b91383f6be6c7cbb`의 `clone_mnt()` 레이스 수정과 A32 호환성 수정을 포함합니다.
 
 - [JackA1ltman/NonGKI_Kernel_Build_2nd](https://github.com/JackA1ltman/NonGKI_Kernel_Build_2nd)
 

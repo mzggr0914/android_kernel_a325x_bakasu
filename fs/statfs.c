@@ -75,7 +75,17 @@ static int statfs_by_dentry(struct dentry *dentry, struct kstatfs *buf)
 extern bool susfs_is_inode_sus_kstat(struct inode *inode, bool *out_is_fuse);
 extern int susfs_sus_kstat_spoof_vfs_statfs(struct inode *inode, struct kstatfs *buf, bool *is_fuse);
 
-static int susfs_statfs_by_dentry(struct dentry *dentry, struct kstatfs *buf, bool *is_fuse)
+int statfs_by_dentry_wrapper(struct dentry *dentry, struct kstatfs *buf)
+{
+	return statfs_by_dentry(dentry, buf);
+}
+
+int calculate_f_flags_wrapper(struct vfsmount *mnt)
+{
+	return calculate_f_flags(mnt);
+}
+
+static int susfs_statfs_by_dentry(struct dentry *dentry, struct vfsmount *mnt, struct kstatfs *buf, bool *is_fuse)
 {
 	int retval;
 
@@ -93,6 +103,8 @@ static int susfs_statfs_by_dentry(struct dentry *dentry, struct kstatfs *buf, bo
 		goto out;
 
 	retval = dentry->d_sb->s_op->statfs(dentry, buf);
+	if (!retval)
+		buf->f_flags = calculate_f_flags(mnt);
 out:
 	if (retval == 0 && buf->f_frsize == 0)
 		buf->f_frsize = buf->f_bsize;
@@ -118,8 +130,7 @@ int vfs_statfs(const struct path *path, struct kstatfs *buf)
 		bool is_fuse = false;
 
 		if (susfs_is_inode_sus_kstat(inode, &is_fuse)) {
-			error = susfs_statfs_by_dentry(path->dentry, buf, &is_fuse);
-			goto bypass_orig_flow;
+			return susfs_statfs_by_dentry(path->dentry, path->mnt, buf, &is_fuse);
 		}
 	}
 #endif
@@ -127,8 +138,7 @@ int vfs_statfs(const struct path *path, struct kstatfs *buf)
 #ifdef CONFIG_KSU_SUSFS_OPEN_REDIRECT
 	if (SUSFS_IS_INODE_OPEN_REDIRECT(d_backing_inode(path->dentry))) {
 		if (!susfs_open_redirect_spoof_vfs_statfs(d_backing_inode(path->dentry), buf)) {
-			error = 0;
-			goto bypass_orig_flow;
+			return 0;
 		}
 	}
 #endif
