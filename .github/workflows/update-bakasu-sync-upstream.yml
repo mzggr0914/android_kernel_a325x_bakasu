@@ -1,9 +1,9 @@
 name: Update BakaSU
 
 on:
-#  schedule:
-#    # 00:17, 06:17, 12:17, 18:17 UTC
-#    - cron: '17 */6 * * *'
+  schedule:
+    # 00:17, 06:17, 12:17, 18:17 UTC
+    - cron: '17 */6 * * *'
   workflow_dispatch:
     inputs:
       publish_release:
@@ -27,10 +27,10 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - name: Checkout common
+      - name: Checkout sync-upstream
         uses: actions/checkout@v7
         with:
-          ref: common
+          ref: sync-upstream
           fetch-depth: 0
           submodules: recursive
           persist-credentials: true
@@ -100,25 +100,25 @@ jobs:
           else
             git commit -m "docs: sync BakaSU README metadata"
           fi
-          git push origin HEAD:common
+          git push origin HEAD:sync-upstream
 
-      - name: Trigger kernel build and publish
-        if: steps.ksu.outputs.updated == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          set -euo pipefail
+#      - name: Trigger kernel build and publish
+ #       if: steps.ksu.outputs.updated == 'true'
+ #       env:
+ #         GH_TOKEN: ${{ github.token }}
+ #       shell: bash
+ #       run: |
+ #         set -euo pipefail
 
-          publish=true
-          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
-            publish='${{ inputs.publish_release }}'
-          fi
+#          publish=true
+#          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+#            publish='${{ inputs.publish_release }}'
+#          fi
 
-          echo "Dispatching kernel.yml on common"
-          echo "publish_release=$publish"
+#          echo "Dispatching kernel.yml on sync-upstream"
+#          echo "publish_release=$publish"
 
-          gh workflow run kernel.yml \
-            --repo "$GITHUB_REPOSITORY" \
-            --ref common \
-            -f publish_release="$publish"
+#          gh workflow run kernel.yml \
+#            --repo "$GITHUB_REPOSITORY" \
+#            --ref sync-upstream \
+#            -f publish_release="$publish"
