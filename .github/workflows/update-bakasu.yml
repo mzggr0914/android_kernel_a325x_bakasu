@@ -1,9 +1,9 @@
 name: Update BakaSU
 
 on:
-  schedule:
-    # 00:17, 06:17, 12:17, 18:17 UTC
-    - cron: '17 */6 * * *'
+#  schedule:
+#    # 00:17, 06:17, 12:17, 18:17 UTC
+#    - cron: '17 */6 * * *'
   workflow_dispatch:
     inputs:
       publish_release:
