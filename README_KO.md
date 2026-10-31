@@ -24,8 +24,8 @@ Samsung MT6768 커널 소스를 기반으로 **BakaSU**와 **SUSFS**를 통합�
 
 <!-- AUTO:BAKASU:START -->
 - BakaSU `v4.2.0-rc3`
-- BakaSU 커널 버전 코드 `35253`
-- BakaSU 커밋 [`5785bdb8`](https://github.com/Baka-SU/BakaSU/commit/5785bdb8091304322f597f67d50e0b79f9815cb2)
+- BakaSU 커널 버전 코드 `35254`
+- BakaSU 커밋 [`f98b7a5b`](https://github.com/Baka-SU/BakaSU/commit/f98b7a5b909910e1830cae8a2f9c78a61f1f6c2a)
 <!-- AUTO:BAKASU:END -->
 - SUSFS `v2.3.0`
 - KernelSU 멀티 매니저 지원
